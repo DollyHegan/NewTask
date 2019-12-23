@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class SortArray1{
+public class SortArrayR{
 	public static void main(String[]args){
 		Scanner sc=new Scanner(System.in);
 		System.out.print("The length of the array: n = ");
@@ -10,27 +10,29 @@ public class SortArray1{
 			System.out.print("The length of the array: n = ");
 			n = sc.nextInt();
 		}
-
 		int array[]= new int[n];
 		System.out.println("Enter elements:");
 		for (int i=0; i<n; i++){
 			System.out.print("array["+i+"] = ");
 			array[i] = sc.nextInt();
 		}
-		for (int imin = 0; imin<n-1; imin++) {
-			int min = imin;
-			for (int k = imin+1; k<n;k++){
-		    	if (array[k]<array[min]) {
-					min = k;
-				}
-			}
-		    int t = array[imin];
-		    array[imin]=array[min];
-		    array[min]=t;   
-		}
+		array=sort(array, n);
 		System.out.println("The new order after sorting:");
 		for (int i=0; i<n; i++){
 			System.out.println("array["+i+"] = "+array[i]);
 		}	
 	}
+	public static int[] sort(int[] array, int n){
+		for (int imin = 0; imin<n-1; imin++) {
+			int min = imin;
+			for (int k = imin+1; k<n; k++){
+		    	if (array[k]<array[min]) 
+					min = k;
+			}			
+			int t = array[imin];
+			array[imin]=array[min];
+			array[min]=t;   
+		}	
+		return array;
+	}	
 }	
